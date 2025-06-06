@@ -45,6 +45,12 @@ def display_game_state(mistakes, secret_word, guessed_letters):
         print(STAGES[2])
     elif mistakes == 2:
         print(STAGES[3])
+    for letter in secret_word:
+        if letter not in guessed_letters:
+            print('_', end=' ')
+        elif letter in guessed_letters:
+            print(letter, end=' ')
+    print()
 
 
 def play_game():
@@ -63,7 +69,7 @@ def play_game():
         guess = input("Guess a letter: ").lower()
         print("You guessed:", guess)
         if guess in secret_word:
-            guessed_letters.add(guess)
+            guessed_letters.append(guess)
         display_game_state(mistakes, secret_word, guessed_letters)
         if guess not in secret_word:
             mistakes += 1
