@@ -1,6 +1,7 @@
 import random
 import ascii_art
 
+
 # List of secret words
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
@@ -28,15 +29,13 @@ def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
     print(ascii_art.STAGES[0])
-    for letter in secret_word:
-        print(letter, end='')
     print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
-    # Game Loop
     mistakes = 0
     guessed_letters = []
 
     while mistakes < 3:
+        # Input validation
         while True:
             guess = input("Guess a letter: ").lower()
 
@@ -49,13 +48,19 @@ def play_game():
             else:
                 break
 
-    #End of game
-    if len(secret_word) == len(guessed_letters):
-        print(f"Word guessed: {secret_word}")
-    else:
-        print(f"Game Over! The word was: {secret_word}")
+        print("You guessed:", guess)
 
+        if guess in secret_word:
+            guessed_letters.append(guess)
+        else:
+            mistakes += 1
 
+        display_game_state(mistakes, secret_word, guessed_letters)
 
-if __name__ == "__main__":
-    play_game()
+        # Check for win
+        if all(letter in guessed_letters for letter in secret_word):
+            print(f"You guessed the word: {secret_word}")
+            return
+
+    # If loop ends, player has lost
+    print(f"Game Over! The word was: {secret_word}")
