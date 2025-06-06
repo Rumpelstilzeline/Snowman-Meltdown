@@ -10,7 +10,9 @@ def get_random_word():
     """Selects a random word from the list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
+
 def display_game_state(mistakes, secret_word, guessed_letters):
+    """prints the stage of the meting snowman + (not) guessed letters"""
     if mistakes == 0:
         print(ascii_art.STAGES[1])
     elif mistakes == 1:
@@ -26,10 +28,10 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def play_game():
+    """contains greeting and game loop (incl. check if won or not)"""
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
     print(ascii_art.STAGES[0])
-    print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
     mistakes = 0
     guessed_letters = []
