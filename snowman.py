@@ -74,6 +74,13 @@ def play_game():
         if guess not in secret_word:
             mistakes += 1
 
+    #End of game
+    if len(secret_word) == len(guessed_letters):
+        print(f"Word guessed: {secret_word}")
+    else:
+        print(f"Game Over! The word was: {secret_word}")
+
+
 
 if __name__ == "__main__":
     play_game()
