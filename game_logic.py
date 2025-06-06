@@ -35,15 +35,19 @@ def play_game():
     # Game Loop
     mistakes = 0
     guessed_letters = []
-    bad_input = True
+
     while mistakes < 3:
-        guess = input("Guess a letter: ").lower()
-        print("You guessed:", guess)
-        if guess in secret_word:
-            guessed_letters.append(guess)
-        display_game_state(mistakes, secret_word, guessed_letters)
-        if guess not in secret_word:
-            mistakes += 1
+        while True:
+            guess = input("Guess a letter: ").lower()
+
+            if len(guess) != 1:
+                print("Please enter only a single letter.")
+            elif not guess.isalpha():
+                print("Please enter a valid letter (no numbers or symbols).")
+            elif guess in guessed_letters:
+                print("You already guessed that letter.")
+            else:
+                break
 
     #End of game
     if len(secret_word) == len(guessed_letters):
