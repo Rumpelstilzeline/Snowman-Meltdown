@@ -12,7 +12,7 @@ def get_random_word():
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
-    """prints the stage of the meting snowman + (not) guessed letters"""
+    """Prints the stage of the meting snowman + (not) guessed letters."""
     if mistakes == 0:
         print(ascii_art.STAGES[1])
     elif mistakes == 1:
@@ -28,7 +28,7 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def play_game():
-    """contains greeting and game loop (incl. check if won or not)"""
+    """Contains greeting and game loop (incl. check if won or not)."""
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
     print(ascii_art.STAGES[0])
@@ -44,7 +44,7 @@ def play_game():
             if len(guess) != 1:
                 print("Please enter only a single letter.")
             elif not guess.isalpha():
-                print("Please enter a valid letter (no numbers or symbols).")
+                print("Please enter a valid letter (no numbers / symbols).")
             elif guess in guessed_letters:
                 print("You already guessed that letter.")
             else:
